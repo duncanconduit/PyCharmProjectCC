@@ -10,15 +10,19 @@ def cp():
     return x
 
 
+def open_file(name1):
+    file = open(cp() + "/" + name1)
+    data_json = json.loads(file.read())
+    extract_json = data_json["currency_details"]
+    return extract_json
+
 def cchelp(a):
     for i in range(0, 156):
-        print((a[i])["cc"] + " = " + a["name"])
+        print((a[i])["cc"] + " = " + (a[i])["name"])
 
 
-def convert():
+def convert(rates):
     while True:
-        global rates
-
         Currency1 = input("Enter current currency code: ")
         Value2 = float(input("Enter " + Currency1 + " Value: "))
         if Currency1 != "USD":
@@ -49,10 +53,6 @@ def getapi(url):
 
 # json file
 
-def open_file(name1):
-    file = open(cp() + "/" + name1)
-    data_json = json.loads(file.read())
-    extract_json = data_json["currency_details"]
-    return extract_json
+
 
 
