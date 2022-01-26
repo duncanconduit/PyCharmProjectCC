@@ -1,7 +1,7 @@
 import json
 import os
 
-import requests
+from errors import *
 
 
 # functions
@@ -15,6 +15,7 @@ def open_file(name1):
     data_json = json.loads(file.read())
     extract_json = data_json["currency_details"]
     return extract_json
+
 
 def cchelp(a):
     for i in range(0, 156):
@@ -42,17 +43,12 @@ def convert(rates):
 # retrieving api
 
 url1 = "https://v6.exchangerate-api.com/v6/57b91e9bc9cf2dcff363bde4/latest/USD"
+
+
 def getapi(url):
-    response_API = requests.get(url)
+    response_API = connection_error(url)
     data: str = response_API.text
     parse_json = json.loads(data)
     return parse_json
 
-
-
-
 # json file
-
-
-
-
