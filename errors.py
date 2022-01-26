@@ -1,6 +1,4 @@
-import requests
-
-
+from requirements import *
 def value_error():
     while True:
         try:
