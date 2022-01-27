@@ -24,10 +24,10 @@ def getapi2(x):
     return parse_json
 
 
-def crypto_2(x):
+def crypto_2(x, c):
     b = getapi2(x)
-    c = ('price_' + x.lower())
-    d = (b['status'])[c]
+    e = ("price_" + c.lower())
+    d = ((b['data'])["market_data"])[e]
     return d
 
 
@@ -43,12 +43,15 @@ def convert(rates):
         Value2 = float(input("Enter " + Currency1 + " Value: "))
         Currency2 = input("Enter wanted Currency Code: ")
         if Currency1 == 'ETH' or Currency1 == 'BTC':
-            Value3 = Value2 / crypto_2(Currency1)
+            Value3 = Value2 * crypto_2(Currency1, "USD")
         elif Currency1 != 'USD':
             Value3 = Value2 / rates[Currency1]
         else:
             Value3 = Value2
-        Value4 = round((Value3 * (rates[Currency2])), 2)
+        if Currency2 == 'ETH' or Currency2 == 'BTC':
+            Value4 = round((Value3) / (crypto_2(Currency2, "USD")), 5)
+        else:
+            Value4 = round((Value3 * (rates[Currency2])), 6)
         print(Value2, Currency1 + " =", Value4, Currency2)
         start1 = int(input("Enter 1 to continue or zero to end process\n"))
         if start1 == 0:
@@ -78,5 +81,3 @@ crypto = open_file('cryptocurrencies.json')
 ###for i in range(0,161):
 ##c = b[i]
 # if x != c["cc"] or x != c["name"]:
-x = 'GG'
-print(x.lower())
