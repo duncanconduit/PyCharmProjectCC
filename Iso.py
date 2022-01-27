@@ -51,9 +51,9 @@ def convert(rates):
         if Currency2 == 'ETH' or Currency2 == 'BTC':
             Value4 = round((Value3) / (crypto_2(Currency2, "USD")), 5)
         else:
-            Value4 = round((Value3 * (rates[Currency2])), 6)
+            Value4 = round((Value3 * (rates[Currency2])), 2)
         print(Value2, Currency1 + " =", Value4, Currency2)
-        start1 = int(input("Enter 1 to continue or zero to end process\n"))
+        start1 = int(input("Enter 1 to continue or 0 to end process\n"))
         if start1 == 0:
             break
         elif start1 != 1:
