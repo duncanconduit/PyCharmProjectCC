@@ -1,5 +1,6 @@
 from functions import *
 from errors import *
+
 parse_json = getapi(url1)
 rates = parse_json["conversion_rates"]
 time_updated = parse_json["time_last_update_utc"]

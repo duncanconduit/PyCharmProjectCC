@@ -7,7 +7,7 @@ from errors import *
 def get_api_2(x):
     url = ("https://data.messari.io/api/v1/assets/" + x + "/metrics")
     response_API = connection_error(url)
-    data: str = response_API.text
+    data = response_API.text
     parse_json = json.loads(data)
     return parse_json
 
